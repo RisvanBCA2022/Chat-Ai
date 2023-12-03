@@ -11,9 +11,9 @@ const query = async(prompt:string,chatId:string,model:string)=>{
         presence_penalty:0,
 
       })
-      .then((res)=>res.choices[0].text)
+      .then((res)=>
+      (res.choices[0].text))
       .catch((err)=>{
-        console.log(err);
         
         `ChatGPT was unable to find a answer for that ! (Error:${err.message}`
       })

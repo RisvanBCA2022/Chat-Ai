@@ -24,7 +24,6 @@ export default async function handler(
 
     const response = await query(prompt,chatId,model)
     
-
     const message: Message={
         text:response || "ChatGPT was unable to find a answer for that",
         createdAt:admin.firestore.Timestamp.now(),
@@ -35,7 +34,7 @@ export default async function handler(
         }
     }
 
-    await adminDb.collection('users').doc(session)
+    await adminDb.collection('users').doc(session?.user?.email)
     .collection('chats').doc(chatId)
     .collection('messages').add(message)
 
